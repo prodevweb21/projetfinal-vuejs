@@ -1,7 +1,8 @@
 
+
 <template>
   <header>
-    <div class="wrapper">
+    <div id="app">
       <nav>
         <RouterLink to="/"><h2>Home</h2></RouterLink>;
         <RouterLink to="/about"><h2>Guide</h2></RouterLink>;
@@ -11,37 +12,44 @@
         <RouterLink to="/contact"><h2>Contact</h2></RouterLink>;
 
       </nav>
+
+
     </div>
   </header>
-
-    <RouterView />
-    <Footer></Footer>
-
+    <main>
+      <RouterView />
+      <Footer />
+    </main>
 </template>
+
+
 
 <script setup lang="ts">
   
 import { RouterLink, RouterView } from 'vue-router';
 import Footer from './components/Footer.vue';
 
+  defineProps ({
+
+    data: function (){
+
+        return{
+            categories: [
+          {
+            title: "Category A",
+          },
+          {
+            title: "Category B",
+            },
+            {
+            title: "Category C",
+          },
+        ],    
+      }
+    },
+  })
 
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

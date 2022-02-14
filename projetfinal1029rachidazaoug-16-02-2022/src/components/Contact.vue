@@ -1,3 +1,5 @@
+
+
 <template>
     <div id="contact">
               <h1>Mon formulaire</h1>
@@ -24,6 +26,8 @@
                   >
                 </p>
 
+              
+
                 <p>
                   <label for="name">Prénom</label>
                   <input
@@ -43,6 +47,8 @@
                   >
                 </p>
 
+
+                
                 <div class='select'>
                 
                  <label for="categories">Categories</label>
@@ -85,7 +91,7 @@ export default  defineComponent({
         },
 
         methods: {
-          checkForm: function (e) {
+          checkForm: function () {
             if (this.name) {
               return false;
             }
@@ -111,14 +117,14 @@ export default  defineComponent({
 
             e.preventDefault();
           },
-          validEmail: function (email) {
+          validEmail: function (email: string) {
             var re =
               /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             return re.test(email);
           },
-          validName: function (name) {
+          validName: function (name: string) {
               var reg = 
-              /^(([A-Za-z0-9 ]){5}\w+)$/;
+              /^(([A-Za-z0-9 ]){2,3}\w+)$/;
               return reg.test(name);
           },
 

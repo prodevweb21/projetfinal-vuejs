@@ -65,10 +65,12 @@ Vue.JS prend en charge une architecture MVVM -Model-View-View-Model- et c’est 
 J'ai utilisé vueJS car son architecture est très simple. Elle permet d'avoir plusieurs composants organisés mais représentés dans une page unique et lisibilité.
 </h5> 
 <br>
+
+
 <b>Objet vueJS</b>
 <br>
 
-Dans L'application j'ai utilise les objets Foo et Bar.
+Dans L'application j'ai utilise les objets 
 Ils permettent de ....
   
 

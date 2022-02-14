@@ -1,3 +1,7 @@
+<
+
+
+
 <template>
 
     <div>
@@ -7,15 +11,14 @@
         {{category}}
         </h2>
 
-        
+
     </div>
 
 
 </template>
 
-<script>
+<script lang="ts">
 export default {
-
     
     data: function () {
       return {
