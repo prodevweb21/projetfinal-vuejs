@@ -20,14 +20,16 @@
       <RouterView />
       <Footer />
     </main>
+
 </template>
 
 
 
 <script setup lang="ts">
-  
+
 import { RouterLink, RouterView } from 'vue-router';
 import Footer from './components/Footer.vue';
+
 
   defineProps ({
 
@@ -46,6 +48,9 @@ import Footer from './components/Footer.vue';
           },
         ],    
       }
+    },
+    components: {
+      
     },
   })
 
