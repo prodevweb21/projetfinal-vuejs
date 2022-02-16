@@ -70,8 +70,11 @@ J'ai utilisé vueJS car son architecture est très simple. Elle permet d'avoir p
 <b>Objet vueJS</b>
 <br>
 
-Dans L'application j'ai utilise les objets 
-Ils permettent de ....
+Dans L'application j'ai utilise la nouvelle version de Vuejs Version 3.
+Cette version utilise spécifiquement Typescript.
+La synthaxe des composants est très différente.
+Un des principaux changements, la mise en application d'une nouvelle API qui permettra de façon fonctionnelle d’écrire le composant
+
   
 
   </div>
