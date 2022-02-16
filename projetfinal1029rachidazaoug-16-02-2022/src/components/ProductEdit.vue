@@ -22,8 +22,8 @@ export default defineComponent ({
           category: "test",
 
            errors: [],
-          //  name: null,
-           // email: null,
+           name: null,
+           email: null,
         },
       };
     },

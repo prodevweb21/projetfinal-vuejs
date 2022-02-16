@@ -14,6 +14,8 @@
             <router-link to="/Product" class="nav-link">Product</router-link>
             <router-link to="/ProductEdit" class="nav-link">productEdit</router-link>
             <router-link to="/ProductList" class="nav-link">productList</router-link>
+            <router-link to="/Contact" class="nav-link">contact</router-link>
+
 
         </div>
         <form class="d-flex">

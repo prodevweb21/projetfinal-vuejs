@@ -1,8 +1,22 @@
 
 
 <template>
-  <header>
+
+
     <div id="app">
+
+      <templte>
+        <li v-for="categorie in categories"
+          :key="categorie">
+          {{categories}}
+          </li>
+
+      </templte>
+
+    <!-- {{categories}} -->
+
+  <Header  >
+      <template>
       <nav>
         <RouterLink to="/"><h2>Home</h2></RouterLink>;
         <RouterLink to="/about"><h2>Guide</h2></RouterLink>;
@@ -10,50 +24,72 @@
         <RouterLink to="/productEdit"><h2>ProductEdit</h2></RouterLink>;
         <RouterLink to="/productList"><h2>ProductList</h2></RouterLink>;
         <RouterLink to="/contact"><h2>Contact</h2></RouterLink>;
-
       </nav>
+      </template>
+      <router-view/>
+  </Header>
 
 
     </div>
-  </header>
-    <main>
-      <RouterView />
-      <Footer />
-    </main>
+        
+    <main>          
+   </main>
+
+     <Footer></Footer>
 
 </template>
 
 
-
-<script setup lang="ts">
+<script>
 
 import { RouterLink, RouterView } from 'vue-router';
 import Footer from './components/Footer.vue';
+import Header from './components/Header.vue'
+import Product from './components/Contact.vue'
+import ProductEdit from './components/ProductEdit.vue'
+import ProductList from './components/ProductList.vue'
+import Contact from './components/Contact.vue'
+import AboutView from './views/AboutView.vue'
+import HomeView from './views/HomeView.vue'
 
+    export default {
+    setup() {
+      let categories = Array
 
-  defineProps ({
+      return {
+        categories: [
 
-    data: function (){
-
-        return{
-            categories: [
-          {
-            title: "Category A",
-          },
-          {
+            {
+          title: "Category A",
+            },
+            {
             title: "Category B",
             },
             {
             title: "Category C",
-          },
-        ],    
+            },
+
+
+        ]
       }
     },
-    components: {
-      
-    },
-  })
+  
 
+        name: 'App',
+        components: {
+          Header,
+          Footer,
+          Product,
+          ProductEdit,
+          ProductList,
+          Contact,
+          HomeView,
+          AboutView,   
+          
+    },  
+      }
+    
+    
 </script>
 
 

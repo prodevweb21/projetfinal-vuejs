@@ -1,6 +1,7 @@
 
 
 <template>
+   
 
     <div>
         <h2>
@@ -9,6 +10,10 @@
         {{category}}
         </h2>
 
+        <li v-for="categorie in categories"
+          :key="categorie">
+          {{categories}}
+          </li>
 
     </div>
 
@@ -17,12 +22,13 @@
 
 <script lang="ts">
 export default {
-    
+
+    props: ['categories'],
     data: function () {
       return {
         title: "Product A",
         category: "Category A",
-        done: false,
+        
       };
     },
 }

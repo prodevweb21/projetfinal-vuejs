@@ -51,11 +51,11 @@
                 
                 <div class='select'>
                 
-                 <label for="categories">Categories</label>
+                 <label for="a">a</label>
                   <select
-                    id="categories"
-                    v-model="categories"
-                    name="categories"
+                    id="a"
+                    v-model="a"
+                    name="a"
                   >
                     <option>1******</option>
                     <option>2******</option>

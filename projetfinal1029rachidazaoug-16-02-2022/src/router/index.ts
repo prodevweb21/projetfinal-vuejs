@@ -1,9 +1,8 @@
-import { createRouter, createWebHistory } from 'vue-router';
-import HomeView from '../views/HomeView.vue';
-import Product from '@/components/Product.vue';
-import ProductEdit from '@/components/ProductEdit.vue';
-import ProductList from '@/components/ProductList.vue';
-import AboutView from '@/views/AboutView.vue';
+import { createRouter, createWebHistory } from 'vue-router'
+import HomeView from '../views/HomeView.vue'
+import Product from '@/components/Product.vue'
+import ProductEdit from '@/components/ProductEdit.vue'
+import ProductList from '@/components/ProductList.vue'
 import Contact from '@/components/Contact.vue';
 
 
@@ -19,7 +18,8 @@ const router = createRouter({
     {
       path: '/about',
       name: 'About',
-      component: AboutView
+      // component: AboutView
+      component: () => import('../views/AboutView.vue')
     },
 
     {
