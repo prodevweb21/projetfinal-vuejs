@@ -1,165 +1,157 @@
-
-
 <template>
-    <div id="contact">
-              <h1>Mon formulaire</h1>
-
-              <form
-                id="app"
-                @submit="checkForm">
-
-                <p v-if="errors.length">
-                  <b>Veuillez corriger les erreurs suivantes:</b>
-                  <ul>
-                    <li v-for="error in errors"
-                    :key="error">{{ error }}</li>
-                  </ul>
-                </p>
-
-                <p>
-                  <label for="name">Nom</label>
-                  <input
-                    id="name"
-                    v-model="name"
-                    type="text"
-                    name="name"
-                  >
-                </p>
-
-              
-
-                <p>
-                  <label for="name">Prénom</label>
-                  <input
-                    id="name"
-                    v-model="name"
-                    type="text"
-                    name="name"
-                  >
-                </p>
-
-                <p>
-                  <label for="email">Email</label>
-                  <input id="email"
-                    v-model="email"
-                    type="email"
-                    name="email"
-                  >
-                </p>
+  <form  @submit.prevent="onSubmit">
+    <!--Prénom -->
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for=""> Prénom:</label><input class="form-control" placeholder="Entrer votre prénom" type="text" v-model="v$.form.prenom.$model">
+          <div class="pre-icon os-icon os-icon-user-male-circle"></div>
+        </div>
+        <!-- Error Message -->
+          <div class="input-errors" v-for="(error, index) of v$.form.prenom.$errors" :key="index">
+            <div class="error-msg">{{ error.$message }}</div>
+          </div>
+      </div>
+  </div>
 
 
-                
-                <div class='select'>
-                
-                 <label for="a">a</label>
-                  <select
-                    id="a"
-                    v-model="a"
-                    name="a"
-                  >
-                    <option>1******</option>
-                    <option>2******</option>
-                    <option>3******</option>
-                  </select>
-                  
-                </div>
 
-                <p>
-                  <input
-                    type="submit"
-                    value="Soumettre"
-                  >
-                </p>
+<!-- Nom de famille -->
+  <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for=""> Nom de Famille:</label><input class="form-control" placeholder="Entrer nom de famille" type="text" v-model="v$.form.nomFamille.$model">
+        <!-- Error Message -->
+          <div class="input-errors" v-for="(error, index) of v$.form.nomFamille.$errors" :key="index">
+            <div class="error-msg">{{ error.$message }}</div>
+          </div>
+        </div>
+      </div>
+  </div>
+     
 
-              </form>
-              </div>
+
+
+    <!-- Email -->
+    <div class="form-group">
+      <label for=""> Adresse email</label><input class="form-control" placeholder="Entrer email" type="email" v-model="v$.form.email.$model">
+      <div class="pre-icon os-icon os-icon-email-2-at2"></div>
+      <!-- Error Message -->
+        <div class="input-errors" v-for="(error, index) of v$.form.email.$errors" :key="index">
+          <div class="error-msg">{{ error.$message }}</div>
+        </div>
+    </div>
+
+        <br>
+        <select v-model="categories">
+        <option v-for="categorie in categories" v-bind:value="categories.title"
+        :key="categorie.id">
+            {{ categories }}
+          </option>
+            </select>
+            
+
+          
+      <br><br>
+      <!-- Boutton doumettre-->
+    <div class="buttons-w">
+      <button class="btn btn-primary" style="margin-left:120px">Soumettre</button>
+    </div>
+
+       
+
+         
+    
+</form>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
 
-export default  defineComponent({
+<script>
+
+import useVuelidate from '@vuelidate/core'
+import { required, email } from '@vuelidate/validators'
+
+      export function validName(name) {
+       let validNamePattern = new RegExp("^[a-zA-Z]+{0-9}(?:[-'\\s][a-zA-Z]+)*$");
+       if (validNamePattern.test(name)){
+        return true;
+       }
+       return false;
+        }
 
     
-    data() {
-          return { 
-          
-            errors: [],
-            name: null,
-            email: null,
-          };
-        },
+    export default {
 
-        methods: {
-          checkForm: function () {
-            if (this.name) {
-              return false;
-            }
+    setup() {
+      let categories = Array
 
-            this.errors = [];
+      return {
+        categories: [
 
-            if (!this.name) {
-              this.errors.push("Le nom est obligatoire.");
-             } else if (!this.validName(this.name)) {
-              this.errors.push("Valid name required.");
-            }
-
-
-            if (!this.email) {
-              this.errors.push("Email required.");
-            } else if (!this.validEmail(this.email)) {
-              this.errors.push("Valid email required.");
-            }
-
-            if (!this.errors.length) {
-              return true;
-            }
-
-            e.preventDefault();
-          },
-          validEmail: function (email: string) {
-            var re =
-              /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            return re.test(email);
-          },
-          validName: function (name: string) {
-              var reg = 
-              /^(([A-Za-z0-9 ]){2,3}\w+)$/;
-              return reg.test(name);
-          },
+            {
+          title: "Category A", 
+            },
+            {
+            title: "Category B",
+            },
+            {
+            title: "Category C",
+            },
+           ],
 
         
+       v$: useVuelidate() }
+          },
+
+          data() {
+            return {
+              form: {
+               prenom: '',
+               nomFamille: '',
+                email: '',
+       
+      },
+    }
+  },
+
+ 
+
+      validations() {
+    return {
+      form: {
+        prenom: { 
+          required, name_validation: {
+            $validator: validName,
+            $message: 'champs invalide'
+          } 
         },
-  })
+
+          nomFamille: { 
+          required, name_validation: {
+            $validator: validName,
+            $message: 'champs invalide'
+          } 
+        },
+
+        email: { required, email },
+      },
+     }
+    },
+   }
+
+  
+
 
 </script>
 
+
+
+
 <style scoped>
 
-#contact{
-  grid-area: 50px;
+form{
 
+  max-width: 100%;
+  padding: 50px;
 }
-
-p{
-max-width: 100px;
-margin: 20px 0 0;
-
-}
-
-input{
-    width: 300px;
-    margin:15px;
-    border: double
-}
-
-h1{
-    text-align: left
-}
-
-.select{
-    font-size:20px
-}
-
-
 </style>
