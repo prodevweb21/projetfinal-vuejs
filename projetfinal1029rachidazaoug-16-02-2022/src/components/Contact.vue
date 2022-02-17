@@ -42,16 +42,16 @@
         </div>
     </div>
 
+<!-- Les champs de -Select- sont selectionnées grâce aux données props de app.vue -->
         <br>
-        <select v-model="categories">
-        <option v-for="categorie in categories" v-bind:value="categories.title"
-        :key="categorie.id">
-            {{ categories }}
+        <select v-model="category">
+        <option v-for="category in categories" v-bind:value="categories.title"
+        :key="category.id">
+            {{ category }}
           </option>
             </select>
-            
 
-          
+
       <br><br>
       <!-- Boutton doumettre-->
     <div class="buttons-w">
@@ -82,23 +82,12 @@ import { required, email } from '@vuelidate/validators'
     
     export default {
 
+        // Props des données venant de App.vue
+      props: ['categories'],
+
     setup() {
-      let categories = Array
 
       return {
-        categories: [
-
-            {
-          title: "Category A", 
-            },
-            {
-            title: "Category B",
-            },
-            {
-            title: "Category C",
-            },
-           ],
-
         
        v$: useVuelidate() }
           },
@@ -148,6 +137,11 @@ import { required, email } from '@vuelidate/validators'
 
 
 <style scoped>
+
+select{
+
+    block-size: 50px;
+}
 
 form{
 

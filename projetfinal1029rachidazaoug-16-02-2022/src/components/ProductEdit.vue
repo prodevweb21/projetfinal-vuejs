@@ -1,75 +1,85 @@
 <template>
 
        `<div>
-                <input type="text" id="title" placeholder="Titre de la tache.." v-model="myproduct.title">
-                                         
-                <input type="text" id="category" placeholder="Nom du projet.." v-model="myproduct.category">
-                <input type="submit" value="Add product" v-on:@click="myway"/>
-                
+
+              <form>
+                <!-- Error Message -->
+                <div class="input-errors" v-for="(error, index) of v$.form.tache.$errors" :key="index">
+                 <div class="error-msg">{{ error.$message }}</div>
+                </div>
+              <select v-model="v$.form.tache.$model">
+               <option v-for="category in categories" v-bind:value="categories.title"
+                :key="category.id">
+                 {{ category }}
+                  </option>
+                  </select>
+                  <br><br>
+                <button @click="submitForm">Submit</button>
+                </form>
+
        </div>`,
     
 </template>
 
 <script>
+  import useVuelidate from '@vuelidate/core';
+  import { required } from "@vuelidate/validators";
+
+export function validName(name) {
+       let validNamePattern = new RegExp("^[a-zA-Z]+{3-50}(?:[-'\\s][a-zA-Z]+)*$");
+       if (validNamePattern.test(name)){
+        return true;
+       }
+       return false;
+        }
 
     export default{
 
-        setup(){
+          props: ['categories'],
 
-          let categories = String
+  
+        setup() {
+          
+            return {
+              v$: useVuelidate() }
+          },
 
-      return {
-        myproduct: {
-          title: "test",
-          project: "test",
-        },
-
-        form: {
-               title: '',
-               category: '',
-         
-        },
-      }
-    
- },
-    methods: {
-      myway: function () {
-        alert(
-          `Titre de la tache: ${this.myproduct.title} Projet : ${this.myproduct.project}`
-        );
-
-      }
-    },
-
-      validations() {
+               data() {
+                  return {
+                      form: {
+                        tache: '',
+      },
+    }
+  },          
+  validations() {
     return {
       form: {
-        title: { 
+        tache: { 
           required, name_validation: {
             $validator: validName,
             $message: 'champs invalide'
           } 
         },
-
-          category: { 
-          required, name_validation: {
-            $validator: validName,
-            $message: 'champs invalide'
-          } 
-        },
-
-      
+        
+      },
      }
-    };
-   }
-
- }
-
- 
-
-
+    },
+    // Pour valider que le submit fonctionne.
+  //                methods: {
+  //                     submitForm() {
+  //                         alert("succès");
+  //   },
+  // },
+}
 
 </script>
+
+
+
+
+
+
+
 
 
 
@@ -86,6 +96,16 @@ input{
     margin:15px;
     border: double;
 
+}
+
+select{
+
+    block-size: 50px;
+}
+
+form{
+
+  margin-left: 25px;
 }
 
 </style>

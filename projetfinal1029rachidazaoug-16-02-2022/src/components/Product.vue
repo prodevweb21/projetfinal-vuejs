@@ -23,7 +23,6 @@
 <script lang="ts">
 export default {
 
-    props: ['categories'],
     data: function () {
       return {
         title: "Product A",

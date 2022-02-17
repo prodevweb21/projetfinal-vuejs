@@ -1,6 +1,6 @@
 
 <template>
-  <div class='container'>
+  <div class='container text-center'>
   
     <h2>Projet final Vuejs 2022</h2>
 
@@ -67,13 +67,15 @@ J'ai utilisé vueJS car son architecture est très simple. Elle permet d'avoir p
 <br>
 
 
-<b>Objet vueJS</b>
+<b>Utilisation de Vuejs 3  dans mon projet-apprentissage</b>
 <br>
 
 Dans L'application j'ai utilise la nouvelle version de Vuejs Version 3.
 Cette version utilise spécifiquement Typescript.
 La synthaxe des composants est très différente.
-Un des principaux changements, la mise en application d'une nouvelle API qui permettra de façon fonctionnelle d’écrire le composant
+Un des principaux changements, la mise en application d'une nouvelle API qui permettra de façon fonctionnelle d’écrire le composant.
+Ce que j'ai constaté et à l'aide des recommandations de mon professeur, c'est qu'il n'est pas possible de faire un props lorsque une navigation avec Router est déja mise en place.
+
 
   
 
@@ -93,7 +95,8 @@ Un des principaux changements, la mise en application d'une nouvelle API qui per
   }
 
   li{
-    font-size:20px
+    font-size:20px;
+    list-style-type: none;
   
     }
 

@@ -1,43 +1,58 @@
 
 
 <template>
-
-
     <div id="app">
 
-      <templte>
-        <li v-for="categorie in categories"
-          :key="categorie">
-          {{categories}}
-          </li>
+      <template>
 
-      </templte>
+        <!-- Ceci est une transmission de données directement dans l'app.vue( Ceci n'est qu'un test) -->
+        <!-- <li v-for="category in categories"
+          :key="category">
+          {{category}}
+          </li> -->
 
-    <!-- {{categories}} -->
+
+
+      </template>
+    <!-- J'ai désactivé la navigation de mon menu Contact et je lui ai fais passer un props -->
+            <h3>formulaire de contact</h3>
+            <contact :categories="categories"></contact>
+    <!-- J'ai désactivé la navigation de mon menu ProductEdit et je lui ai fais passer un props -->
+            <h3>Ceci est le formulaire de productEdit</h3>
+            <productEdit :categories="categories"></productEdit>
+
+
+
+
+
+
 
   <Header  >
+
       <template>
       <nav>
         <RouterLink to="/"><h2>Home</h2></RouterLink>;
         <RouterLink to="/about"><h2>Guide</h2></RouterLink>;
         <RouterLink to="/product"><h2>Product</h2></RouterLink>;
-        <RouterLink to="/productEdit"><h2>ProductEdit</h2></RouterLink>;
+               
+        <!-- J'ai désactivé ce menu -Contact-pour permettre un props -->
+        <!-- <RouterLink to="/productEdit"><h2>ProductEdit</h2></RouterLink>; -->
+
         <RouterLink to="/productList"><h2>ProductList</h2></RouterLink>;
-        <RouterLink to="/contact"><h2>Contact</h2></RouterLink>;
+
+        <!-- J'ai désactivé ce menu -Contact-pour permettre un props -->
+        <!-- <RouterLink to="/contact"><h2>Contact</h2></RouterLink>; -->
       </nav>
       </template>
       <router-view/>
   </Header>
 
-
     </div>
-        
-    <main>          
-   </main>
 
-     <Footer></Footer>
-
+      <Footer></Footer>
 </template>
+
+
 
 
 <script>

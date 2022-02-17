@@ -1,5 +1,5 @@
 <template>
-  <div class='container'>
+  <div class='container text-center'>
     
     
   <h2>Bonjour Vuejs</h2>
@@ -17,7 +17,6 @@
 
 export default{
 
-  // props: ['categories'],
 
 }
 
@@ -36,6 +35,8 @@ export default{
 h2{
 
   text-align: center;
+  color: blue;
+  text-decoration: underline;
 
 }
 

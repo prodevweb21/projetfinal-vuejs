@@ -3,7 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import Product from '@/components/Product.vue'
 import ProductEdit from '@/components/ProductEdit.vue'
 import ProductList from '@/components/ProductList.vue'
-import Contact from '@/components/Contact.vue';
+// import Contact from '@/components/Contact.vue';
 
 
 const router = createRouter({
@@ -28,23 +28,26 @@ const router = createRouter({
       component: Product
     },
 
-    {
-      path: '/productEdit',
-      name: 'ProductEdit',
-      component: ProductEdit
-    },
+          // la navigation de ce menu ProductEdict est désactivée pour permettre de faire un props.
+
+    // {
+    //   path: '/productEdit',
+    //   name: 'ProductEdit',
+    //   component: ProductEdit
+    // },
 
     {
       path: '/productList',
       name: 'ProductList',
       component: ProductList
     },
-
-    {
-      path: '/contact',
-      name: 'Contact',
-      component: Contact
-    },
+  
+    // la navigation de ce menu Contact est désactivée pour permettre de faire un props.
+    // {
+    //   path: '/contact',
+    //   name: 'Contact',
+    //   component: Contact
+    // },
   
   ]
 })
